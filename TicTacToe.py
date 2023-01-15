@@ -5,6 +5,7 @@ class TicTacToe:
     def __init__(self):
         # Create the main window
         self.root = tk.Tk()
+        self.root.configure(background = 'Black')
         self.root.title("Tic Tac Toe")
 
         # Create the buttons for the game board
@@ -12,21 +13,21 @@ class TicTacToe:
         for i in range(3):
             button_row = []
             for j in range(3):
-                button = tk.Button(self.root, width=10, height=4, font=("Arial", 20),  command=lambda row=i, col=j: self.play(row, col))
-                button.grid(row=i, column=j)
+                button = tk.Button(self.root, width=7, height=3, font=("Arial Black", 20),  command=lambda row=i, col=j: self.play(row, col))
+                button.grid(row=i, column=j, padx = 10, pady = 10)
                 button_row.append(button)
             self.buttons.append(button_row)
 
         # Create a label for displaying the game status
-        self.status_label = tk.Label(self.root, text="User's turn", font=("Arial", 20))
+        self.status_label = tk.Label(self.root, text="User's turn", font=("Arial", 20), bg = 'Black', fg = 'White')
         self.status_label.grid(row=3, column=0, columnspan=3)
 
         # Create a label for displaying the scores
-        self.score_label = tk.Label(self.root, text="User: 0  Computer: 0", font=("Arial", 20))
+        self.score_label = tk.Label(self.root, text="User: 0  Computer: 0", font=("Arial", 20), bg = 'Black', fg = 'White')
         self.score_label.grid(row=4, column=0, columnspan=3)
 
         # Create a restart button
-        self.restart_button = tk.Button(self.root, text="Restart", command=self.restart, font = ("Arial",20))
+        self.restart_button = tk.Button(self.root, text="Restart", command=self.restart, font = ("Arial",20), bg = 'Black', fg = 'White')
         self.restart_button.grid(row=5, column=0, columnspan=3)
 
         # Initialize the game variables
