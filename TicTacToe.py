@@ -26,7 +26,7 @@ class TicTacToe:
         self.score_label.grid(row=4, column=0, columnspan=3)
 
         # Create a restart button
-        self.restart_button = tk.Button(self.root, text="Restart", command=self.restart)
+        self.restart_button = tk.Button(self.root, text="Restart", command=self.restart, font = ("Arial",20))
         self.restart_button.grid(row=5, column=0, columnspan=3)
 
         # Initialize the game variables
@@ -52,6 +52,11 @@ class TicTacToe:
                 self.status_label['text'] = "User wins!".format(self.player)
                 self.scores[self.player - 1] += 1
                 self.update_scores()
+            elif self.player == 2:
+                self.status_label['text'] = "Computer Wins!".format(self.player)
+                self.scores[self.player - 1] += 1
+                self.update_scores()
+                #print(self.scores[0],self.scores[1])
             self.game_over = True
             return
 
@@ -124,7 +129,7 @@ class TicTacToe:
         self.player = 1
         self.game_over = False
         self.board = [[0 for _ in range(3)] for _ in range(3)]
-        self.scores = [0, 0]
+        #self.scores = [0, 0]
         self.status_label['text'] = "User's turn"
         for i in range(3):
             for j in range(3):
